@@ -35,11 +35,12 @@ components:
       deployment/memoryRequest: 100Mi
       deployment/container-port: 8081
     kubernetes:
-      uri: deploy.yaml
-      endpoints:
-        - name: http-8081
-          targetPort: 8081
-          path: /
+      inlined: |
+        uri: deploy.yaml
+        endpoints:
+          - name: http-8081
+            targetPort: 8081
+            path: /
 commands:
   - id: build-image
     apply:
